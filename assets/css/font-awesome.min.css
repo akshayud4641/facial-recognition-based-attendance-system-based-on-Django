@@ -1,0 +1,10 @@
+<table  style="text-align: left; border: 1pt" method="POST">
+<p style="margin-bottom: 1cm;">Add Student Details</p>
+
+       enter the ID number:<input style="margin-bottom: 0.5cm;" type="text" placeholder="enter 3 digit number only" name="id"><br>
+       enter the name:<input style="margin-bottom: 0.5cm;" type="text" placeholder="enter characters only" name="name"><br>
+       <button style="margin-bottom: 0.5cm;" onclick="location.href='{% url 'dataset' %}'">dataset</button>
+       
+
+      
+</table>

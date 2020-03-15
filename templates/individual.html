@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div class="container" >
+      <div class="col-lg-12" style="background:red;margin-top:3em;margin-bottom:5em;padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+    -moz-box-shadow:    2px 2px 15px 0px rgba(92, 133, 92, 0.7);
+    box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);">
+      
+        <h1 align="center" style="color:yellow;font-family:'Times New Roman', Times, serif">Facial Recognition Attendance System
+          </h1></br>
+          <h2 align="center" style="color: rgba(31, 2, 136, 0.856);font-family:'Times New Roman', Times, serif">ATTENDANCE OF INDIVIDUAL STUDENT'S STATUS</h2>
+          
+      </div>
+      
+    </div>
+  <style>
+  body{
+    background:url("{% static 'BG.jpg' %}") no-repeat;
+    background-size:cover ;
+    background-attachment:fixed; 
+     }
+
+
+  </style>
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Number of classes Attended',    {{attended}} ],
+          ['Number of classes absent',      {{absent}}]
+          
+        ]);
+
+        var options = {
+          title: 'Student Attendance Status'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+        <table style="background-color: rgba(52, 110, 199, 0.671);float:right;" id="piechart" class="chart" style="height:50px; margin-right: 20%;"></table>
+
+    <h2 style="margin-left: 20%; color:gold;font-family:sans-serif;" >Student Id : {{id}}</br>
+      Student Name : {{name}}</br>
+      Student Department : {{dept}}</br>
+      Student Sem: {{sem}}</br>
+
+
+    </h2>
+    <div align="center" style="margin-top: 150px;">
+      <h2 style="font-family:Verdana, Geneva, Tahoma, sans-serif;color: gold;">
+        Number of classes attended by {{name}} : {{attended}}</br>
+        Total Number of classes : {{Overall}}</br>
+  </h2></div>
+</body>
+</html>

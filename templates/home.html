@@ -1,0 +1,177 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+<head>
+  
+</head>
+
+<h1>hello {{name}}!!!</h1>
+
+
+
+{% load static %}
+{% block title %}Image Recognition | AI Course-work{% endblock %}
+{% block content %}
+<div id="particles-js"></div>
+<div class="container" >
+  <div class="col-lg-12" style="background: rgba(0,0,0,0.6);margin-top:3em;margin-bottom:5em;padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+-moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);">
+    <div class="col-lg-12">
+      
+      <h1 style="text-align: center;" class="text-center section-title" style="margin-bottom:2em">Face Recognition Attendance System.</h1>
+    </div>
+    <style>
+       form{
+       text-align: center;
+       
+       }
+       body{
+        background:url("{% static '194225.jpg' %}") no-repeat;
+       background-size:cover ;
+       background-attachment:fixed;
+      }
+       .button-container form, .button-containerdiv{ display: inline;}
+       .button-container button{ display:inline; vertical-align: middle;}
+       body{
+        margin:0;
+        padding:0;
+        font-family: sans-serif;
+        background-size:cover;
+        
+    
+      } 
+      input{
+        
+        overflow: hidden;
+        
+        padding: 2px 0;
+        margin: 2px 0;
+        border-bottom: 1px;
+        border-bottom: 1px solid #4caf50;
+      }
+       
+      h4{
+        margin-bottom: 1.5em;
+      }
+      img{
+        border-radius:50%;
+        -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
+      }
+      img:hover{
+        -webkit-box-shadow: 2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        -moz-box-shadow:    2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        box-shadow:         2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        border:2px solid #fff;
+      }
+      h3{
+        margin-bottom: 1.3em;
+      }
+      a{
+        color:inherit
+      }
+      a:hover{
+        color:inherit;
+        text-decoration: none;
+      }
+      button.hover{
+        cursor:grab
+      }
+      .section-title:after {
+        	content:' ';display:block;margin:0 auto;width:100px;margin-top: 6px;border:2px solid #d0d0d0;border-radius:4px;
+        	-webkit-border-radius:4px;
+        	-moz-border-radius:4px;
+        	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+          margin-bottom:1em;
+        }
+    </style>
+
+<form  style="text-align: center;" action="dataset" method="POST">
+  <div id="left" style="float: left">
+    <table  style="text-align: right" method="POST">
+  
+    
+{% csrf_token %}
+<caption><h3/ style="font-family: sans-serif;">Add Student details</caption>
+
+<tr><td style="color: black;"><strong style="color: #4caf50;"/>Enter the ID number:</td><td><input type="text" placeholder="enter 3 digit number only" id="Id" name="id"></td></tr>
+<tr><td style="color: black;"><strong style="color: #4caf50;"/>Enter the name:</td><td><input type="text" placeholder="enter characters only" id="Name" name="name"></td></tr>
+
+
+<tr><td><strong style="color: #4caf50;"/>Department:</td><td><input list="DEPT" name="DEPT" required id="Dept"  placeholder="DEPT">
+  <datalist id="DEPT">
+    <option value="ECE">
+    <option value="MECH">
+    <option value="ISE">
+    <option value="CSE">
+    <option value="EEE">
+    <option value="AUTO">
+    <option value="CIVIL">	
+  </datalist></td></tr> 
+  <tr><td><strong style="color: #4caf50;"/>Semester:</td><td><input list="SEM" name="SEM" required id="Sem"  placeholder="SEM">
+    <datalist id="SEM">
+      <option value="1">
+      <option value="2">
+      <option value="3">
+      <option value="4">
+      <option value="5">
+      <option value="6">
+      <option value="7">	
+      <option value="8">	
+    </datalist></td></tr>   
+    <tr><td colspan="2" style="text-align:center"><input class="btn" type="submit" value="Take Images" onclick="return alert1()"></td></tr> 
+    </table>
+  </div>
+
+</form>
+<img src="{% static 'PanaFacePRO.jpg' %}" height="400px" width="500px" style="float:right;margin-left:110px;" />
+
+<form style="margin-right:15px;" action="detect" method="POST">
+              {% csrf_token %}
+              <div id="right" style="float: right">
+                <form style="float: right" method="get" action="">
+                <div align="center"> 
+                 <caption><h3 style="font-family: sans-serif;">Fill Details</h3> </caption></div>      
+                 <div width=50% align="center">
+                <table>
+                 <input list="DEPT" name="DEPT" required placeholder="DEPT" id="Dept">
+                  <datalist id="DEPT">
+                    <option value="ECE">
+                    <option value="MECH">
+                    <option value="ISE">
+                    <option value="CSE">
+                    <option value="EEE">
+                    <option value="AUTO">
+                    <option value="CIVIL">	
+                  </datalist>
+                  </br>
+                <input list="SEM" name="SEM" required placeholder="SEM" id="Sem">
+                  <datalist id="SEM">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                    <option value="6">
+                    <option value="7">	
+                    <option value="8">	
+                  </datalist></br>
+                
+                  
+                  <input type="submit" class="btn" value="Take Attendance">
+                </table>
+                </div></form>
+                </div>
+              
+              
+</form>
+
+
+
+
+{% endblock %}
